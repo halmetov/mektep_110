@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Зиямат Хусанов атындағы ЖОМ</title>
+<link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/static/js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- for bootstrap working -->
+	<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- web-fonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<script src="/static/js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+		  $("#slider").responsiveSlides({
+			auto: true,
+			nav: true,
+			speed: 500,
+			namespace: "callbacks",
+			pager: true,
+		  });
+		});
+	</script>
+	<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/easing.js"></script>
+<!--/script-->
+<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+				});
+			});
+</script>
+</head>
+<body>
+
+	<!-- header-section-starts-here -->
+	<div class="header">
+		<div class="header-top">
+			<div class="wrap">
+				<div class="top-menu">
+					<ul>
+						<li><a href="/about">Мекеме туралы</a></li>
+						<li><a href="/ramizder">Мемлекеттік рәміздер туралы</a></li>
+						<li><a href="/contact">Байланыс</a></li>
+					</ul>
+				</div>
+
+
+
+				{% for i in info %}
+				<div class="num">
+					<p>{% if i.phone %}{{ i.phone }} {% else %}+7 775 205 38 50 {% endif %}</p>
+				</div>
+				{% endfor %}
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="header-bottom">
+			{% for i in info %}
+			<div class="logo text-center">
+				<a href="/"><img width="10%" src="/media/{{ i.logotip }}" alt="" /></a>
+			</div>
+			{% endfor %}
+			<div class="navigation">
+				<nav class="navbar navbar-default" role="navigation">
+		   <div class="wrap">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div>
+			<!--/.navbar-header-->
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					 <li class="active"><a href="/">Басты бет</a></li>
+					<li ><a href="/about">Мекеме туралы</a></li>
+					<li ><a href="/ustaz">Мектеп әкімшілігі</a></li>
+					{% for cat in categories %}
+						{% if not cat.parent %}
+				    <li class="dropdown">
+						<a {% if cat.level == 1 %} href="/catalog/{{ cat.id }}"{% endif %} {% if cat.level == 0 %} class="dropdown-toggle" data-toggle="dropdown" {% endif %}>{{ cat.title }}{% if cat.level == 0 %}<b class="caret"></b>{% endif %}</a>
+						{% if cat.level == 0 %}
+						<ul class="dropdown-menu">
+							{% for cat_child in categories %}
+								{% if cat_child.parent and cat_child.parent.id == cat.id %}
+								<li><a href="/catalog/{{ cat_child.id }}">{{ cat_child.title }}</a></li>
+								<li class="divider"></li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+						{% endif %}
+					  </li>
+						{% endif %}
+					{% endfor %}
+
+					<li><a href="/contact">Байланыс</a></li>
+					<div class="clearfix"></div>
+				</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<!--/.navbar-collapse-->
+	 <!--/.navbar-->
+			</div>
+		</nav>
+		</div>
+	</div>
+	<!-- header-section-ends-here -->
+	<div class="wrap">
+		<div class="move-text">
+			<div class="breaking_news">
+				<h2>Сонғы жаңалықтар</h2>
+			</div>
+			<div class="marquee">
+				{% for n in news %}
+				<div class="marquee1"><a class="breaking" href="{{ n.id }}">{{ n.title }}</a></div>
+				{% endfor %}
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+			<script type="text/javascript" src="/static/js/jquery.marquee.min.js"></script>
+			<script>
+			  $('.marquee').marquee({ pauseOnHover: true });
+			  //@ sourceURL=pen.js
+			</script>
+		</div>
+	</div>
+	<!-- content-section-starts-here -->
+	<div class="main-body">
+		<div class="wrap ">
+              {% block content %}
+
+        {% endblock %}
+			{% if page != 'contact'%}
+			<div class="col-md-4 side-bar">
+			<div class="secound_half" >
+				<div class="row">
+					<div class="col-md-6">
+						<a href="single.html"><img src="/static/images/direc.png" width="100%" style="border-radius:8px" alt="" /></a>
+					</div>
+					<div class="col-md-6">
+						<b class="pp-title" style="font-size:24px"> Юлдашев <br>Халмурат <br>Ташматбаевич</b>
+						<hr>
+						<p style="font-size:19px">Мектеп директоры </p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="first_half" >
+				<div class="list_vertical">
+					<section class="accordation_menu">
+					  <div style="border-radius: 18px;border: 0.5px solid #1a73e8;">
+						<input id="label-1" name="lida" type="radio" checked/>
+					   <label for="label-1" id="item1" style="    border-radius: 17.5px 17.5px 0 0;"><i class="ferme"> </i>Төтенше қызметтердің телефондары<i class="icon-plus-sign i-right1"></i><i class="icon-minus-sign i-right2"></i></label>
+						<div class="" id="a1">
+							<img src="/static/images/qwer.png" width="100%" style="border-radius:0 0 18px 18px;">
+					  </div>
+					</section>
+				</div>
+			</div>
+			<div class="first_half" >
+				<div class="list_vertical">
+					<section class="accordation_menu">
+					  <div style="border-radius: 5px;border: 0.5px solid #1a73e8;">
+					   <div class="" id="a1">
+						   <p style="margin:5%;" ><a href="/about">Мекеме туралы</a></p>
+						   <hr style="width:90%;margin:0 auto;">
+						   <p style="margin:7%;" ><a href="/ramizder">Мемлекеттік рәміздер туралы</a></p>
+						   <hr style="width:90%;margin:0 auto;">
+						   <p style="margin:7%;" ><a href="/contact">Байланыс</a></p>
+						   <hr style="width:90%;margin:0 auto;">
+					  </div>
+					</section>
+				</div>
+			</div>
+					 <div class="secound_half" >
+						 <script>
+        (function(d, s, id) {
+            if (d.getElementById(id)) {
+                if (window.__TOMORROW__) {
+                    window.__TOMORROW__.renderWidget();
+                }
+                return;
+            }
+            const fjs = d.getElementsByTagName(s)[0];
+            const js = d.createElement(s);
+            js.id = id;
+            js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'tomorrow-sdk');
+        </script>
+
+        <div class="tomorrow"
+           data-location-id="065646"
+           data-language="RU"
+           data-unit-system="METRIC"
+           data-skin="light"
+           data-widget-type="upcoming"
+           style="padding-bottom:22px;position:relative;"
+        >
+          <a
+            href="https://www.tomorrow.io/weather/"
+            rel="nofollow noopener noreferrer"
+            target="_blank"
+            style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+          >
+            <img
+              alt="Powered by Tomorrow.io"
+              src="https://weather-website-client.tomorrow.io/img/powered-by-tomorrow.svg"
+              width="140"
+              height="15"
+            />
+          </a>
+        </div>
+					 </div>
+					<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+			{% endif %}
+	</div>
+	<!-- content-section-ends-here -->
+	<!-- footer-section-starts-here -->
+	<div class="footer">
+		<div class="footer-top">
+			<div class="wrap">
+				<div class="col-md-6 col-xs-6 col-sm-4 footer-grid">
+					<h4 class="footer-head">Біз туралы</h4>
+					<p>Шымкент қаласының білім басқармасының
+«З.Хусанов атындағы №110 жалпы орта білім беретін мектебі»
+мемлекеттік коммуналдық қазыналық кәсіпорыны</p>
+					</div>
+				<div class="col-md-6 col-xs-12 footer-grid">
+					<h4 class="footer-head">Бізбен байланыс</h4>
+					<address>
+						<ul class="location">
+							<li><span class="glyphicon glyphicon-map-marker"></span></li>
+							<li>Шымкент қаласы, Қаратау ауданы, Сайрам тұрғын алабы, Ибрагим ата көшесі №318</li>
+							<div class="clearfix"></div>
+						</ul>
+						<ul class="location">
+							<li><span class="glyphicon glyphicon-earphone"></span></li>
+							<li>8-7252-26-31-27</li>
+							<div class="clearfix"></div>
+						</ul>
+						<ul class="location">
+							<li><span class="glyphicon glyphicon-envelope"></span></li>
+							<li><a href="https://ithub.kz/">IThub.kz</a></li>
+							<div class="clearfix"></div>
+						</ul>
+					</address>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="wrap">
+				<div class="copyrights col-md-12" >
+					<p style="text-align:center"> © 2022. All Rights Reserved | Design by  <a href="https://ithub.kz/"> IT Hub</a></p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- footer-section-ends-here -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+				/*
+				var defaults = {
+				wrapID: 'toTop', // fading element id
+				wrapHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+				*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+});
+</script>
+<a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!---->
+</body>
+</html>

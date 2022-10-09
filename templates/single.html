@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+    {% block content %}
+			<div class="single-page">
+			<div class="col-md-8 content-left single-post">
+				<div class="blog-posts">
+			<h3 class="post">{{ snew.title }}</h3>
+				<div class="last-article">
+					<p style="width:80%;"><img style="width:100%;" src="/media/{{ snew.logo }}" alt=""></p>
+					<br>
+					<p>{{ snew.date.day }}.{{ snew.date.month }}.{{ snew.date.year }} <small>ж.</small> <span> <small>{{ snew.date.hour }}:{{ snew.date.minute }}</small></span> </p>
+					<p class="artext ">{{ snew.main_desc }}</p>
+					<p class="artext">{{ snew.description }}</p>
+
+					<div class="clearfix"></div>
+			</div>
+		</div>
+
+				</div>
+	{% endblock %}

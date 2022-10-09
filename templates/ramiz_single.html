@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+    {% block content %}
+			<div class="col-md-8 content-left">
+				<div class="privacy">
+					<h2 class="head">{{ ramiz.title }}</h2>
+					<p style="margin:20;"><img style="width:300px;" src="/media/{{ ramiz.logo }}" alt=""></p>
+					<p>{{ ramiz.main_desc }}</p>
+					<br>
+					<p>{{ ramiz.avtor }}</p>
+					<br>
+					<p>{{ ramiz.description|safe }}</p>
+				</div>
+			</div>
+{% endblock %}

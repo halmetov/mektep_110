@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+    {% block content %}
+<div class="col-md-8 content-left">
+				<div class="slider">
+					<div class="callbacks_wrap">
+						<ul class="rslides" id="slider">
+							{% for new in news %}
+							<li>
+								<img src="/media/{{ new.logo }}" alt="">
+								<div class="caption">
+									<a href="">{{ new.title }}</a>
+								</div>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="articles">
+					<header>
+						<h3 class="title-head">Жаңалықтар</h3>
+					</header>
+					{% for new in news %}
+					<div class="article">
+						<div class="article-left">
+							<a href=""><img src="/media/{{ new.logo }}"></a>
+						</div>
+						<div class="article-right">
+							<div class="article-title">
+								<p>{{ new.date.day }}.{{ new.date.month }}.{{ new.date.year }} <a class="span_link" href="#"></a></p>
+								<a class="title" href="/{{ new.id }}"> {{ new.title }}</a>
+							</div>
+							<div class="article-text">
+								<p>{{ new.main_desc }}.....</p>
+								<a href="/{{ new.id }}"><img src="/static/images/more.png" alt="" /></a>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					{% endfor %}
+				</div>
+
+				</div>
+
+{% endblock %}

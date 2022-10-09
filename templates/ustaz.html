@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+    {% block content %}
+			<div class="col-md-8 content-left">
+			<div class="articles sports">
+					<header>
+						<h3 class="title-head">Мектеп әкімшілігі</h3>
+					</header>
+					  <div class="row">
+                          {% for u in ustazdar %}
+    					<div class="col-md-3">
+							<div class="card" style="width: 100%">
+							  <img src="/media/{{ u.logo }}" width="100%" class="card-img-top" alt="...">
+							  <div class="card-body"><br>
+								<h4 class="card-title text-primary">{{ u.last_name }} {{ u.first_name }}</h4>
+								<p class="card-text">{{ u.description }}</p>
+
+							  </div>
+							</div>
+
+						</div>
+                          {% endfor %}
+					  </div>
+
+				</div>
+
+
+			</div>
+
+{% endblock %}

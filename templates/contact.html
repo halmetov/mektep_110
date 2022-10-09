@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+    {% block content %}
+
+			<!--contact-section-starts-->
+				<div class="contact-section">
+	<header>
+		<h2 class="heading text-center">Біздің мекенжайымыз</h2>
+	</header>
+     <div class="map">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2949.8169123447615!2d69.70298371541621!3d42.32510367918922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38a8e18324157913%3A0x43e95c3127488d4f!2zMTEwINCXINCl0YPRgdCw0L3QvtCy!5e0!3m2!1sru!2skz!4v1665032481317!5m2!1sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	 </div>
+	 <div class="contact_grid">
+	 	  <div class="col-md-8 contact-top">
+			  <h3>Хабарлама қалдыру</h3>
+			     <form action="/contact" method="POST">
+					 {% csrf_token %}
+					<div class="to">
+                     	<input name="name" type="text" class="text" value="Аты" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Аты';}">
+					 	<input name="email" type="text" class="text" value="Почта" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Почта';}" style="margin-left:20px">
+					 	<input name="subject" type="text" class="text" value="Тақырып" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Тақырып';}" style="margin-left:20px">
+					</div>
+					<div class="text">
+	                   <textarea name="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">Хабарлама:</textarea>
+	                </div>
+	                <div class="form-submit1" >
+			           <input name="submit" type="submit"  value="Хабарламаны жіберу"><br>
+					</div>
+					<div class="clearfix"> </div>
+                 </form>
+         </div>
+         <div class="col-md-4 contact-top_right">
+			  <h3>Мекеме туралы</h3>
+			  <p></p>
+			  <ul class="contact_info">
+			  	<li><span><b>Телефон номері:</b> 8-7252-26-31-27</span></li>
+				  <br>
+				  <li><span><b>Мекен жайы:</b> Шымкент қаласы, Қаратау ауданы, Сайрам тұрғын алабы, Ибрагим ата көшесі №318</span></li>
+				  <br>
+				  <li><span><b>Жұмыс тәртібі:</b> 08:00-ден 18:30 дейін</span></li>
+			  </ul>
+	 	</div>
+		<div class="clearfix"></div>
+     </div>
+</div>
+{% endblock %}

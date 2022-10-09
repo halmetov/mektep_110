@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+    {% block content %}
+			<div class="col-md-8 content-left">
+				<div class="about">
+					<br>
+					<h2 class="head">{{ active_cat.title }}</h2><hr>
+					{% for doc in documents %}
+					<div class="alert rounded" style="border: 1px solid #1a73e8;" role="alert">
+					  <h5 class="alert-heading">
+						  {{ doc.date.day }}.{{ doc.date.month }}.{{ doc.date.year }}</h5>
+						<h3  style="padding:20px 0;"><a href="/doc/{{ doc.id }}">{{ doc.title }}</a></h3>
+					  <a href="/doc/{{ doc.id }}" class="btn btn-primary">Толығырақ »</a>
+					</div>
+					{% endfor %}
+
+				</div>
+			</div>
+{% endblock %}
